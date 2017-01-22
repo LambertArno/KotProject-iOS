@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class KotViewController: UITableViewController {
     
@@ -23,8 +25,10 @@ class KotViewController: UITableViewController {
     @IBOutlet weak var waarborgbetalingLabel: UILabel!
     @IBOutlet weak var contractTypeLabel: UILabel!
     @IBOutlet weak var contractDuurLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
     var kot: Kot!
+    var kotLocation: CLLocationCoordinate2D!
     
     override func viewDidLoad() {
         title = "Kot in de " + kot.straatnaam
@@ -42,6 +46,30 @@ class KotViewController: UITableViewController {
         contractTypeLabel.text = kot.contractType
         contractDuurLabel.text = kot.contractDuration
 
+        addressToCoordinates(address: "\(kot.straatnaam) \(kot.huisnummer) \(kot.plaats)")
+        
+
+    }
+    
+    func addressToCoordinates(address: String) {
+        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            if (placemarks?.count)! > 0 {
+                let placemark = placemarks?[0]
+                let location = placemark?.location
+                let coordinate = location?.coordinate
+                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+
+                self.mapView.region = MKCoordinateRegion(center: coordinate!, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                let pin = MKPointAnnotation()
+                pin.coordinate = coordinate!
+                self.mapView.addAnnotation(pin)
+
+            }
+        })
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
