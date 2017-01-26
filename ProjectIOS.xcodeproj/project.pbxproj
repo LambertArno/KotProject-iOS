@@ -20,6 +20,7 @@
 		11C77C3A1E0181B80009ED16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C77C381E0181B80009ED16 /* LaunchScreen.storyboard */; };
 		11C77C451E0181B80009ED16 /* ProjectIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C77C441E0181B80009ED16 /* ProjectIOSTests.swift */; };
 		11C77C501E0181B80009ED16 /* ProjectIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C77C4F1E0181B80009ED16 /* ProjectIOSUITests.swift */; };
+		11D3865F1E3A07A7007E3423 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D3865E1E3A07A7007E3423 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		11C77C4B1E0181B80009ED16 /* ProjectIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C77C4F1E0181B80009ED16 /* ProjectIOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectIOSUITests.swift; sourceTree = "<group>"; };
 		11C77C511E0181B80009ED16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11D3865E1E3A07A7007E3423 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				1171F5831E140984006E11A5 /* EmptyViewController.swift */,
 				1171F5851E1409A5006E11A5 /* KotViewController.swift */,
 				1171F5871E140B70006E11A5 /* KotenViewController.swift */,
+				11D3865E1E3A07A7007E3423 /* MapViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				11C77C321E0181B80009ED16 /* ViewController.swift in Sources */,
 				1171F5861E1409A6006E11A5 /* KotViewController.swift in Sources */,
 				1171F5821E1401A1006E11A5 /* Result.swift in Sources */,
+				11D3865F1E3A07A7007E3423 /* MapViewController.swift in Sources */,
 				1171F5881E140B70006E11A5 /* KotenViewController.swift in Sources */,
 				1171F5801E140025006E11A5 /* Service.swift in Sources */,
 				11C77C301E0181B80009ED16 /* AppDelegate.swift in Sources */,

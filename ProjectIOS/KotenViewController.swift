@@ -12,6 +12,7 @@ class KotenViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var errorView: UIView!
+    @IBOutlet weak var mapViewButton: UIBarButtonItem!
     
     fileprivate var koten: [Kot] = []
     private var currentTask: URLSessionTask?
@@ -73,11 +74,14 @@ class KotenViewController: UIViewController {
     private func showErrorView() {
         tableView.separatorStyle = .none
         errorView.isHidden = false
+        mapViewButton.isEnabled = false
+        
     }
     
     private func hideErrorView() {
         tableView.separatorStyle = .singleLine
         errorView.isHidden = true
+        mapViewButton.isEnabled = true
     }
     
     func refreshTableView() {
@@ -100,10 +104,20 @@ class KotenViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigationController = segue.destination as! UINavigationController
-        let kotViewController = navigationController.topViewController as! KotViewController
-        let selectedIndex = tableView.indexPathForSelectedRow!.row
-        kotViewController.kot = koten[selectedIndex]
+        switch segue.identifier! {
+        case "mapview":
+            let viewController = segue.destination 
+            let mapViewController = viewController as! MapViewController
+            mapViewController.koten = koten
+        case "detail":
+            let navigationController = segue.destination as! UINavigationController
+            let kotViewController = navigationController.topViewController as! KotViewController
+            let selectedIndex = tableView.indexPathForSelectedRow!.row
+            tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
+            kotViewController.kot = koten[selectedIndex]
+        default:
+            break
+        }
     }
 }
 
